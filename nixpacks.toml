@@ -1,0 +1,16 @@
+[phases.setup]
+nixPkgs = ["nodejs_20", "python3", "pkg-config", "pixman", "cairo", "pango", "libpng", "libjpeg", "giflib", "librsvg"]
+
+[phases.install]
+cmds = [
+  "npm install -g pnpm",
+  "pnpm install --frozen-lockfile"
+]
+
+[phases.build]
+cmds = [
+  "pnpm --filter @workspace/discord-bot run build"
+]
+
+[start]
+cmd = "pnpm --filter @workspace/discord-bot run start"
